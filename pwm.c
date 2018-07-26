@@ -21,23 +21,23 @@ void timer1_init(void) {
 	/*initializing the timer*/
 	
 	TCCR1A = (1 << COM1A1) | (1 << COM1A0) | (1 << COM1B1) | (1 << COM1B0) | (1 << WGM11);		/* It is reset to "0" in the live count, when TCNT1 = OCR1A (/1024)	*/						
-	TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS10) | (1 << CS12);		/* CTC (Reset on coincidence)						*/
-	TCNT1 = 0x00;									/* timer state (initialization)						*/
+	TCCR1B = (1 << WGM13) | (1 << WGM12) | (1 << CS10) | (1 << CS12);				/* CTC (Reset on coincidence)						*/
+	TCNT1 = 0x00;											/* timer state (initialization)						*/
 	
-	ICR1 = 0xFF;									/* Pulse repetition period (max value)					*/
+	ICR1 = 0xFF;											/* Pulse repetition period (max value)					*/
 		
-	OCR1A=0x00;									/* duty ratio								*/
-	OCR1B=0x00;									/*									*/
+	OCR1A=0x00;											/* duty ratio								*/
+	OCR1B=0x00;											/*									*/
 	
 }
 
 int main(void)
 {
 	/* Configure GPIO */
-	DDRB |= 0XE;									/* set PB3, PB2, PB1 to output						 */
-	PORTB |= 0xE;									/* set output to 1							 */
-	volatile uint16_t  res;								/* random result							 */
-	int x0 = 2;									/* start value								*/
+	DDRB |= 0XE;											/* set PB3, PB2, PB1 to output						 */
+	PORTB |= 0xE;											/* set output to 1							 */
+	volatile uint16_t  res;										/* random result							 */
+	int x0 = 2;											/* start value								*/
 	timer1_init();
 		
 	while(1) {
